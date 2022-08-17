@@ -131,6 +131,7 @@ export default {
         "https://productfeedback-app-api.herokuapp.com/api/feedbacks/" +
         this.id;
       await axios.put(uri, this.feedback).then(() => {
+        this.$store.commit("EDIT_FEEDBACKS", this.feedback);
         this.$router.push({ name: "Feedback", params: { id: this.id } });
       });
     },

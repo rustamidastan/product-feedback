@@ -33,6 +33,16 @@ export default new Vuex.Store({
       });
     },
 
+    EDIT_FEEDBACKS(state, feedback) {
+      state.feedbacks = state.feedbacks.filter((item) => {
+        if (item.id != feedback.id) {
+          return item;
+        } else {
+          item = feedback;
+        }
+      });
+    },
+
     CLEAR_USER_DATA() {
       localStorage.removeItem("user");
       location.reload();
@@ -82,7 +92,6 @@ export default new Vuex.Store({
         }
       });
 
-      // console.log(state.feedbacks);
       commit("SET_ROADMAP", roadmap);
     },
   },
