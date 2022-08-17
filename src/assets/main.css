@@ -1,0 +1,86 @@
+/* FONTS  */
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap");
+
+/* COLORS  */
+
+:root {
+  --text-color: #647196;
+  --body-bg: #f7f8fd;
+  --white: #fff;
+  --nav-links-color: #4661e6;
+  --nav-links-hover-color: #cfd7ff;
+  --nav-links-active-color: #4661e6;
+  --planed: #f49f85;
+  --in-progress: #ad1fea;
+  --live: #62bcfa;
+  --heading-color: #3a4374;
+  --secondary-white: #f2f4fe;
+  --add-bg-color: #ad1fea;
+  --add-bg-hover: #c75af6;
+  --home-header-bg: #373f68;
+
+  --nav-title-bg: radial-gradient(
+    128.88% 128.88% at 103.9% -10.39%,
+    #e84d70 0%,
+    #a337f6 53.09%,
+    #28a7ed 100%
+  );
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-bottom: 130px;
+  font-family: "Jost";
+  font-size: 16px;
+  color: var(--text-color);
+  background: var(--body-bg);
+}
+
+.container {
+  padding: 0 20px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.add-link {
+  padding: 12.5px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--secondary-white);
+  transition: all 0.3s ease;
+  text-align: center;
+  background-color: var(--add-bg-color);
+}
+
+.add-link:hover {
+  background-color: var(--add-bg-hover);
+}
+
+.go-back {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.go-back img {
+  margin-right: 10px;
+}
+
+.go-back:hover {
+  text-decoration: underline;
+}
