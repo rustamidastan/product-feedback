@@ -38,7 +38,7 @@ export default new Vuex.Store({
         if (item.id != feedback.id) {
           return item;
         } else {
-          item = feedback;
+          return feedback;
         }
       });
     },
