@@ -1,11 +1,27 @@
 <template>
   <div class="suggestion-select">
-    <span class="select-title">Sort by</span>
-    <select v-model="paymentMethod">
-      <option v-for="option in options" :key="option" :value="option">
-        {{ option }}
-      </option>
-    </select>
+    <div class="feedback-sort">
+      <div class="current-select" @click="categorySelect = true">
+        <span
+          >Sort by: <span class="current-option">{{ sortBy }}</span></span
+        >
+        <img
+          src="../assets/bottom-white-icon.png"
+          :class="{ active: categorySelect }"
+        />
+      </div>
+      <div class="option-select" v-if="categorySelect">
+        <div
+          class="option"
+          v-for="option in options"
+          :key="option"
+          @click="changeOption(option)"
+          :class="{ active: option == sortBy }"
+        >
+          {{ option }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,37 +29,95 @@
 export default {
   data() {
     return {
-      sortBy: "Most Upvotes",
+      // sortBy: "Most Upvotes",
       options: [
         "Most Upvotes",
         "Least Upvotes",
         "Most Comments",
         "Least Comments",
       ],
+      categorySelect: false,
     };
   },
   computed: {
-    paymentMethod: {
-      get() {
-        return this.$store.state.selectValue;
-      },
-      set(value) {
-        this.$store.commit("CHANGE_SELECT_VALUE", value);
-      },
+    sortBy() {
+      return this.$store.state.selectValue;
+    },
+  },
+
+  methods: {
+    changeOption(option) {
+      this.$store.commit("CHANGE_SELECT_VALUE", option);
+      this.categorySelect = false;
     },
   },
 };
 </script>
 
 <style>
-.suggestion-select {
-  color: var(--secondary-white);
-  font-size: 14px;
-  line-height: 20.23px;
-  font-weight: 700;
+.feedback-sort {
+  position: relative;
 }
 
-.suggestion-select span {
+.current-select {
+  cursor: pointer;
+}
+.current-select span {
   font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #f2f4fe;
+}
+
+.current-option {
+  font-weight: 700 !important;
+  color: #f2f4fe;
+}
+
+.current-select img {
+  margin-left: 9px;
+}
+
+.current-select img.active {
+  transform: rotateX(180deg);
+}
+
+.option-select {
+  position: absolute;
+  top: 52px;
+  width: 255px;
+  background: #ffffff;
+  box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+  border-radius: 10px;
+}
+
+.option {
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23px;
+  color: #647196;
+}
+
+.option:hover {
+  color: #ad1fea;
+}
+
+.option.active::after {
+  content: "";
+  width: 12px;
+  height: 8px;
+  background-image: url(../assets/current-icon.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.option:not(:last-child) {
+  border-bottom: 1px solid rgba(58, 67, 116, 0.15);
 }
 </style>
