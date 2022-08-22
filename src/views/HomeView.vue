@@ -34,7 +34,6 @@ export default {
   }
   .navbar {
     display: flex;
-    justify-content: space-between;
     margin-bottom: 40px;
   }
 
@@ -51,6 +50,16 @@ export default {
 
   .navbar-title {
     padding-top: 103px;
+  }
+
+  .navbar-desc {
+    width: 67%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navbar-desc .navbar-links {
+    margin: 0 auto;
   }
 }
 </style>

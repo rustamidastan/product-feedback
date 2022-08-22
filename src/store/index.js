@@ -10,7 +10,7 @@ export default new Vuex.Store({
     feedbacks: [],
     selectValue: "Most Upvotes",
     activeType: "All",
-    roadmap: {},
+    responsiveMenu: false,
   },
   mutations: {
     SET_USER_DATA(state, userData) {
@@ -56,13 +56,13 @@ export default new Vuex.Store({
       state.selectValue = value;
     },
 
-    SET_ROADMAP(state, roadmap) {
-      state.roadmap = roadmap;
+    SET_COMMENTS(state, comments) {
+      state.comments = comments;
     },
 
-    SET_COMMENTS(state, comments) {
-      state.comments=comments;
-    }
+    CHANGE_MENU(state, value) {
+      state.responsiveMenu = value;
+    },
   },
   actions: {
     setFeedbacks({ commit }) {
@@ -73,30 +73,8 @@ export default new Vuex.Store({
         });
     },
 
-    setRoadmap({ commit, state }) {
-      let roadmap = {
-        suggestion: [],
-        planed: [],
-        inProgress: [],
-        live: [],
-      };
-
-      state.feedbacks.filter((item) => {
-        if (item.roadmap_status == "Suggestion") {
-          roadmap.suggestion.push(item);
-        }
-        if (item.roadmap_status == "Planed") {
-          roadmap.planed.push(item);
-        }
-        if (item.roadmap_status == "In-Progress") {
-          roadmap.inProgress.push(item);
-        }
-        if (item.roadmap_status == "Live") {
-          roadmap.live.push(item);
-        }
-      });
-
-      commit("SET_ROADMAP", roadmap);
+    changeMenu({ commit }, value) {
+      commit("CHANGE_MENU", value);
     },
   },
   modules: {},

@@ -28,6 +28,10 @@ export default {
   methods: {
     addActive(type) {
       this.$store.commit("CHANGE_TYPE", type);
+
+      if (this.$store.state.responsiveMenu == true) {
+        this.$store.dispatch("changeMenu", false);
+      }
     },
   },
 };

@@ -1,0 +1,78 @@
+/* HOME HEADER STYLES  */
+@media screen and (max-width: 450px) {
+  .container {
+    padding: 0 8px;
+  }
+
+  .home-header {
+    font-size: 13px !important;
+  }
+
+  .header-logo {
+    display: none;
+  }
+
+  /* HOME PAGE NAV STYLES  */
+  /* .navbar-links {
+    display: none;
+  }
+
+  .navbar-roadmap {
+    display: none;
+  } */
+
+  .navbar-title {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar-title h2 {
+    font-size: 15px;
+    line-height: 21.7px;
+    letter-spacing: -0.2px;
+  }
+
+  .navbar-title p {
+    font-size: 13px;
+  }
+
+  .menu-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .navbar-desc {
+    display: none;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .navbar-res {
+    display: flex;
+    height: 100%;
+    padding: 24px;
+    position: absolute;
+    z-index: 10;
+    top: 72px;
+    right: 0;
+    flex-direction: column;
+    background-color: #f7f8fd;
+  }
+
+  .navbar-links {
+    margin-bottom: 24px;
+  }
+}

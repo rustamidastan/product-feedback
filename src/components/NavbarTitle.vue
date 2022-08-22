@@ -1,9 +1,36 @@
 <template>
   <div class="navbar-title">
-    <h2>Frontend Mentor</h2>
-    <p>Feedback Board</p>
+    <div class="navbar-title_text">
+      <h2>Frontend Mentor</h2>
+      <p>Feedback Board</p>
+    </div>
+
+    <div class="navbar-title_btns">
+      <button class="menu-icon" v-if="menu" @click="change(false)">
+        <img src="../assets/icon-close.svg" />
+      </button>
+      <button class="menu-icon" v-else @click="change(true)">
+        <img src="../assets/icon-menu.svg" />
+      </button>
+    </div>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    menu() {
+      return this.$store.state.responsiveMenu;
+    },
+  },
+
+  methods: {
+    change(value) {
+      this.$store.dispatch("changeMenu", value);
+    },
+  },
+};
+</script>
 
 <style>
 .navbar-title {
