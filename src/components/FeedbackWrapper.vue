@@ -7,7 +7,7 @@
         v-for="(feedback, index) in sortedFeedbacks"
         :key="index"
       >
-        <FeedbackItem :feedback="feedback" />
+        <FeedbackItem :feedback="feedback" @comments="getComments" />
       </router-link>
     </div>
     <div v-else>
@@ -20,10 +20,21 @@
 import HomeHeader from "./HomeHeader.vue";
 import NoFeedback from "./NoFeedback.vue";
 import FeedbackItem from "./FeedbackItem.vue";
+import axios from "axios";
 
 export default {
   components: { HomeHeader, NoFeedback, FeedbackItem },
+  data() {
+    return {
+      comments: [],
+    };
+  },
 
+  methods: {
+    getComments(comment) {
+      this.comments.push(comment);
+    },
+  },
   computed: {
     setFeedbacks() {
       return this.$store.state.feedbacks;
@@ -73,41 +84,6 @@ export default {
         });
       }
 
-      //   if (this.selectItem == "Most Comments") {
-      //     this.setFeedbacks.map((item) => {
-      //       if (!arr.includes(item.comments.length)) {
-      //         arr.push(item.comments.length);
-      //       }
-      //     });
-      //     arr.sort(function (a, b) {
-      //       return b - a;
-      //     });
-      //     arr.map((item) => {
-      //       this.setFeedbacks.map((index) => {
-      //         if (index.comments.length === item) {
-      //           defaultArr.push(index);
-      //         }
-      //       });
-      //     });
-      //   }
-
-      //   if (this.selectItem == "Least Comments") {
-      //     this.setFeedbacks.map((item) => {
-      //       if (!arr.includes(item.comments.length)) {
-      //         arr.push(item.comments.length);
-      //       }
-      //     });
-      //     arr.sort(function (a, b) {
-      //       return a - b;
-      //     });
-      //     arr.map((item) => {
-      //       this.setFeedbacks.map((index) => {
-      //         if (index.comments.length === item) {
-      //           defaultArr.push(index);
-      //         }
-      //       });
-      //     });
-      //   }
       return defaultArr;
     },
 

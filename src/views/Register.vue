@@ -75,7 +75,7 @@ export default {
         if (res.status == 201) {
           this.$store.commit("SET_USER_DATA", res.data);
           timeout: 2000;
-          this.$router.push("/about");
+          this.$router.push("/");
         }
       } catch (error) {
         this.errors = error.response.data.errors;

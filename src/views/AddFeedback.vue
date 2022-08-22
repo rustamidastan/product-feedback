@@ -11,6 +11,7 @@
             <h4 class="form-title">Feedback Title</h4>
             <p class="form-def">Add a short, descriptive headline</p>
             <input type="text" v-model="title" />
+            <p class="error" v-if="errors.title">{{ errors.title[0] }}</p>
           </div>
 
           <div>
@@ -44,6 +45,7 @@
                 etc.
               </p>
               <textarea v-model="body"></textarea>
+              <p class="error" v-if="errors.body">{{ errors.body[0] }}</p>
             </div>
 
             <div class="create-form__btns">
@@ -67,6 +69,7 @@ export default {
       categorySelect: false,
       title: "",
       body: "",
+      errors: [],
     };
   },
 
@@ -188,7 +191,6 @@ export default {
 .create-form input[type="text"] {
   width: 100%;
   height: 48px;
-  margin-bottom: 24px;
   padding: 12px 0 14px 24px;
   border: 1px solid transparent;
   background-color: var(--body-bg);
@@ -264,12 +266,15 @@ export default {
   width: 100%;
   height: 96px;
   padding: 13px 24px;
-  margin-bottom: 32px;
   resize: none;
   border-radius: 5px;
   background-color: var(--body-bg);
   outline: transparent;
   border: 1px solid transparent;
+}
+
+.create-form .error {
+  margin-bottom: 32px;
 }
 
 .create-form textarea:focus {

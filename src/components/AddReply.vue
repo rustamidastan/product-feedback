@@ -8,6 +8,7 @@
       ></textarea>
       <button class="add-link">Post Reply</button>
     </form>
+    <p class="error" v-if="error">{{ error }}</p>
   </div>
 </template>
 
@@ -18,27 +19,32 @@ export default {
   data() {
     return {
       text: "",
+      error: "",
     };
   },
 
   methods: {
     postComment() {
-      if (this.$store.state.user) {
-        const subcomment = {
-          user_id: this.$store.state.user.id,
-          body: this.text,
-          comment_id: this.id,
-          replied: this.replied,
-        };
+      if (this.text != "") {
+        if (this.$store.state.user) {
+          const subcomment = {
+            user_id: this.$store.state.user.id,
+            body: this.text,
+            comment_id: this.id,
+            replied: this.replied,
+          };
 
-        axios.post(
-          "https://productfeedback-app-api.herokuapp.com/api/subcomments",
-          subcomment
-        );
-        this.$emit("subcomment", subcomment);
-        this.text = "";
+          axios.post(
+            "https://productfeedback-app-api.herokuapp.com/api/subcomments",
+            subcomment
+          );
+          this.$emit("subcomment", subcomment);
+          this.text = "";
+        } else {
+          this.$router.push("/login");
+        }
       } else {
-        this.$router.push("/login");
+        this.error = "Please add somethinf for reply";
       }
     },
   },

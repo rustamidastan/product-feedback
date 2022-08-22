@@ -11,6 +11,7 @@
             <h4 class="form-title">Feedback Title</h4>
             <p class="form-def">Add a short, descriptive headline</p>
             <input type="text" v-model="feedback.title" />
+            <p class="error" v-if="errors.title">{{ errors.title[0] }}</p>
           </div>
 
           <div>
@@ -69,6 +70,7 @@
               etc.
             </p>
             <textarea v-model="feedback.body"></textarea>
+            <p class="error" v-if="errors.body">{{ errors.body[0] }}</p>
           </div>
 
           <div class="edit-form__btns">
@@ -99,6 +101,7 @@ export default {
       statusSelect: false,
       title: "",
       body: "",
+      errors: [],
     };
   },
   mounted() {
@@ -132,7 +135,11 @@ export default {
         this.id;
       await axios.put(uri, this.feedback).then(() => {
         this.$store.commit("EDIT_FEEDBACKS", this.feedback);
-        this.$router.push({ name: "Feedback", params: { id: this.id } });
+        this.$router
+          .push({ name: "Feedback", params: { id: this.id } })
+          .catch((error) => {
+            this.errors = error.response.data.errors;
+          });
       });
     },
 

@@ -35,14 +35,18 @@ export default {
   created() {
     axios
       .get("https://productfeedback-app-api.herokuapp.com/api/comments")
-      .then(
-        (response) =>
-          (this.comments = response.data.filter((item) => {
-            if (item.feedback_id == this.feedback.id) {
-              return item;
-            }
-          }))
-      )
+      .then((response) => {
+        this.comments = response.data.filter((item) => {
+          if (item.feedback_id == this.feedback.id) {
+            return item;
+          }
+        });
+        const comment = {
+          id: this.feedback.id,
+          commentLength: this.comments.length,
+        };
+        this.$emit("comments", comment);
+      })
       .catch((err) => console.log(err));
   },
 };

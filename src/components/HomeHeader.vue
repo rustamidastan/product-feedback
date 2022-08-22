@@ -79,4 +79,18 @@ export default {
 .home-right {
   margin-left: auto;
 }
+
+@media screen and (max-width: 850px) {
+  .feedback-container {
+    max-width: 100%;
+  }
+
+  .single-feedback {
+    max-width: 689px !important;
+  }
+
+  .add-reply form textarea {
+    width: 380px !important;
+  }
+}
 </style>

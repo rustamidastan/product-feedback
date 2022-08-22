@@ -33,8 +33,8 @@ export default {
       options: [
         "Most Upvotes",
         "Least Upvotes",
-        "Most Comments",
-        "Least Comments",
+        // "Most Comments",
+        // "Least Comments",
       ],
       categorySelect: false,
     };

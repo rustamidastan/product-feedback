@@ -59,6 +59,10 @@ export default new Vuex.Store({
     SET_ROADMAP(state, roadmap) {
       state.roadmap = roadmap;
     },
+
+    SET_COMMENTS(state, comments) {
+      state.comments=comments;
+    }
   },
   actions: {
     setFeedbacks({ commit }) {
