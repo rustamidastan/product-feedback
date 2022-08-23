@@ -18,7 +18,7 @@ new Vue({
       this.$store.commit("SET_USER_DATA", userData);
     }
     this.$store.dispatch("setFeedbacks");
-    this.$store.dispatch("setRoadmap");
+    // this.$store.dispatch("setRoadmap");
   },
   render: (h) => h(App),
 }).$mount("#app");

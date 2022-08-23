@@ -58,7 +58,7 @@ export default {
       }
     });
 
-    this.$store.commit("SET_ROADMAP", roadmap);
+    // this.$store.commit("SET_ROADMAP", roadmap);
     this.roadmap = roadmap;
   },
 };
