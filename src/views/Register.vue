@@ -90,8 +90,9 @@ export default {
   padding-top: 30px;
 }
 .register__container {
-  width: 750px;
+  max-width: 750px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .register__title {
